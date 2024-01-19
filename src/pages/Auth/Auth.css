@@ -1,0 +1,129 @@
+.auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    flex-wrap: wrap;
+  }
+
+  .roww{
+   width: 700px;
+   height: auto;
+   box-shadow: rgba(1, 77, 255, 0.25) 0px 25px 50px -12px;
+   border-radius: 50px;
+  }
+  
+  .auth > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 30px;
+  }
+  
+  .auth-left {
+    gap: 30px;
+   
+  }
+  
+  .app-name > h1 {
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  .app-name > h6 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .auth-form {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .auth-form > div {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  
+  .info-input {
+    outline: none;
+    border: none;
+    box-shadow: rgba(1, 77, 255, 0.25) 0px 7px 29px 0px;
+    border-radius: 8px;
+    padding: 15px;
+    flex: 1;
+  }
+  
+  .info-btn {
+    padding: 12px 24px;
+    margin-left: 10px;
+  }
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    background-color:rgba(0, 76, 255, 0.604) ;
+    cursor: pointer;
+    transition: all 0.3s linear;
+  }
+  
+  .button:hover {
+    box-shadow: rgba(1, 77, 255, 0.25) 0px 7px 29px 0px;
+    color: rgb(42, 14, 255);
+    background-color: white;
+  }
+  
+  .button:disabled {
+    background-color: silver;
+    pointer-events: none;
+  }
+  
+  .info-span {
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgb(42, 14, 255);
+  }
+  
+  .outline-danger{
+    outline: 2px solid red;
+  }
+  
+  .confirm-span {
+    color: red;
+    font-size: 12px;
+    align-self: flex-end;
+    margin-right: 16px;
+    margin-top: 5px;
+  }
+  
+  @media (max-width: 768) {
+    .logo-img {
+      width: 54px;
+      height: 54px;
+    }
+    .app-name > h1 {
+      font-size: 38px;
+    }
+    .app-name > h6 {
+      font-size: 14px;
+      margin-right: 10px;
+    }
+    .auth > div {
+      margin: 0 auto;
+    }
+    .auth-form > div {
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+  

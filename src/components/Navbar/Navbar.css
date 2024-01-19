@@ -1,0 +1,26 @@
+.container{
+    padding: 15px !important;
+    box-shadow: rgba(1, 77, 255, 0.25) 0px 4px 12px;
+    border-radius: 20px;
+}
+
+.navbar-brand{
+    color: rgb(1, 77, 255) !important;
+}
+
+.navbar-brand:hover{
+    text-shadow: rgba(1, 77, 255, 0.25) 0px 4px 12px;
+}
+
+.search{
+    color: rgb(1, 77, 255) !important;
+    background-color: transparent;
+    border-color: rgb(1, 77, 255) !important;
+    transition: all 0.3s linear !important;
+}
+
+
+.search:hover{
+    color: white !important;
+    background-color: rgb(1, 77, 255) !important;
+}
