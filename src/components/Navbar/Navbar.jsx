@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg">
-        <div className="container">
+        <div className="container fon">
           <a className="navbar-brand" href="/">
             𝙶𝚊𝚕𝚕𝚎𝚛𝚢
           </a>
