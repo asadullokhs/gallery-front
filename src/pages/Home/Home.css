@@ -6,3 +6,25 @@
     width: 630px;
     text-shadow: rgba(1, 77, 255, 0.25) 0px 4px 12px;
 }
+
+.second-title{
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: all 0.3 linear;
+}
+
+.second-title > p:hover{
+    text-shadow: rgba(1, 77, 255, 0.25) 0px 4px 12px;
+}
+
+.dote{
+    width: 7px;
+    margin-bottom: 13px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: rgb(1, 77, 255);
+}
