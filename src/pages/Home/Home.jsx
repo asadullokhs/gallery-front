@@ -16,7 +16,7 @@ const Home = () => {
         const res = await getPhotos();
         toast.dismiss();
         toast.success("All photos");
-        setPhotos(res.data.photos);
+        setPhotos(res?.data?.photos);
       } catch (error) {
         console.log(error);
         toast.error(error.message);

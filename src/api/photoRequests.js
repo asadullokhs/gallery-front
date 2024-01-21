@@ -7,3 +7,7 @@ const API = axios.create({ baseURL: serverUrl });
 export const getPhotos = () => {
   return API.get(`/gallery`);
 };
+
+export const deletePhoto = (id) => {
+  return API.delete(`/gallery/${id}`);
+};
