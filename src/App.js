@@ -12,9 +12,13 @@ import "bootstrap/dist/js/bootstrap";
 
 const App = () => {
   const { currentUser } = useInfoContext();
-  <ToastContainer />;
 
-  return <div className="App"> {currentUser ? <Home /> : <Auth />}</div>;
+  return (
+    <div className="App">
+      {currentUser ? <Home /> : <Auth />}
+      <ToastContainer />
+    </div>
+  );
 };
 
 export default App;

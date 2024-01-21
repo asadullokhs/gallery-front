@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 import Navbar from "../../components/Navbar/Navbar";
 import { useInfoContext } from "../../context/Context";
+import { getPhotos } from "../../api/photoRequests";
+import { toast } from "react-toastify";
+import Photo from "../../components/Photo/Photo";
 
 const Home = () => {
-  const { currentUser } = useInfoContext();
+  const { currentUser, photos, setPhotos } = useInfoContext();
+
+  useEffect(() => {
+    const getImages = async () => {
+      try {
+        toast.loading("Please wait...");
+        const res = await getPhotos();
+        toast.dismiss();
+        toast.success("All photos");
+        setPhotos(res.data.photos);
+      } catch (error) {
+        console.log(error);
+        toast.error(error.message);
+      }
+    };
+
+    getImages();
+  }, [currentUser._id]);
   return (
     <div className="Home">
       <Navbar />
@@ -24,6 +44,19 @@ const Home = () => {
           <span className="dote"></span>
           <p>𝙻𝚒𝚏𝚎 𝚜𝚝𝚢𝚕𝚎</p>
         </div>
+      </div>
+      <div className="images">
+        {photos.length > 0 ? (
+          photos.map((photo) => {
+            return (
+              <div key={photo._id} className="photo-item">
+                <Photo photo={photo} />
+              </div>
+            );
+          })
+        ) : (
+          <h3>Images not found!</h3>
+        )}
       </div>
     </div>
   );

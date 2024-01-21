@@ -9,6 +9,8 @@ export const InfoProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("profile") || null)
   );
 
+  const [photos, setPhotos] = useState([]);
+
   const serverUrl = process.env.REACT_APP_SERVER_URL;
 
   const exit = () => {
@@ -21,6 +23,8 @@ export const InfoProvider = ({ children }) => {
     setCurrentUser,
     exit,
     serverUrl,
+    photos,
+    setPhotos,
   };
 
   return (
