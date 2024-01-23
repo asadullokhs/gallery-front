@@ -13,7 +13,6 @@ const Photo = ({ photo }) => {
       toast.loading("Please wait...");
       const res = await deletePhoto(photo._id);
       toast.dismiss();
-      window.location.reload();
       toast.success("Succesfully deleted!");
     } catch (error) {
       toast.dismiss();
