@@ -15,3 +15,7 @@ export const deletePhoto = (id) => {
 export const searchPhotos = (title) => {
   return API.get(`/gallery/search?title=${title}`);
 };
+
+export const updatePhoto = (id, formDate) => {
+  return API.put(`/gallery/${id}`, formDate);
+};

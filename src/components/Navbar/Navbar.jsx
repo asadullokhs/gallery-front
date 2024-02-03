@@ -4,8 +4,8 @@ import { useInfoContext } from "../../context/Context";
 import { toast } from "react-toastify";
 import { searchPhotos } from "../../api/photoRequests";
 
-const Navbar = () => {
-  const { exit, setPhotos } = useInfoContext();
+const Navbar = ({ setPhotos }) => {
+  const { exit } = useInfoContext();
 
   const photo_ref = useRef();
 
@@ -18,9 +18,10 @@ const Navbar = () => {
       setPhotos(res?.data?.result);
 
       photo_ref.current.value = "";
+      toast.success("Found photos");
     } catch (error) {
       toast.dismiss();
-      toast.error(error.response.data.message);
+      toast.error(error?.response?.data.message);
     }
   };
   return (

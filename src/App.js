@@ -9,14 +9,17 @@ import "react-toastify/dist/ReactToastify.css";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap";
+import Modal from "./components/Modal/Modal";
 
 const App = () => {
-  const { currentUser } = useInfoContext();
+  const { currentUser, modal } = useInfoContext();
 
   return (
     <div className="App">
       {currentUser ? <Home /> : <Auth />}
       <ToastContainer />
+
+      {modal && <Modal />}
     </div>
   );
 };

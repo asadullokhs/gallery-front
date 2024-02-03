@@ -5,20 +5,21 @@ import { deletePhoto } from "../../api/photoRequests";
 import { toast } from "react-toastify";
 
 const Photo = ({ photo }) => {
-  const { exit } = useInfoContext();
+  const { exit, setModal, setPostId, postId } = useInfoContext();
+
   const [open, setOpen] = useState(false);
 
   const handleDelete = async () => {
     try {
       toast.loading("Please wait...");
-      const res = await deletePhoto(photo._id);
+      await deletePhoto(postId);
       toast.dismiss();
       toast.success("Succesfully deleted!");
     } catch (error) {
       toast.dismiss();
       console.log(error);
       toast.error(error?.message);
-      if (error?.message == "jwt expired") {
+      if (error?.message === "jwt expired") {
         exit();
       }
     }
@@ -32,10 +33,19 @@ const Photo = ({ photo }) => {
         {open && (
           <>
             <span
-              onClick={handleDelete}
+              onClick={() => {
+                setPostId(photo._id);
+                handleDelete();
+              }}
               className="photo-delete fa-solid fa-trash"
             ></span>
-            <span className="photo-update fa-solid fa-pen"></span>
+            <span
+              onClick={() => {
+                setModal(true);
+                setPostId(photo._id);
+              }}
+              className="photo-update fa-solid fa-pen"
+            ></span>
             <a
               download={photo?.image.url}
               href=""

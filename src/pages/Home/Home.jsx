@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Navbar from "../../components/Navbar/Navbar";
 import { useInfoContext } from "../../context/Context";
@@ -7,9 +7,9 @@ import { toast } from "react-toastify";
 import Photo from "../../components/Photo/Photo";
 
 const Home = () => {
-  const { currentUser, photos, setPhotos } = useInfoContext();
+  const [photos, setPhotos] = useState([]);
 
-  console.log(photos);
+  const { currentUser } = useInfoContext();
 
   useEffect(() => {
     const getImages = async () => {
@@ -29,7 +29,7 @@ const Home = () => {
   }, [currentUser._id, setPhotos]);
   return (
     <div className="Home">
-      <Navbar />
+      <Navbar setPhotos={setPhotos} />
       <div className="container">
         <div className="main-title ">
           𝙷𝙴𝙻𝙻𝙾 {currentUser?.name}! 𝚆𝙴𝙻𝙲𝙾𝙼𝙴 𝚃𝙾 𝚆𝙰𝚃𝙲𝙷 𝚈𝙾𝚄𝚁 𝙿𝙷𝙾𝚃𝙾𝚂 𝙵𝚁𝙾𝙼 𝚈𝙾𝚄𝚁 𝙾𝚆𝙽
