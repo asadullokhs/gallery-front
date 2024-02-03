@@ -11,3 +11,7 @@ export const getPhotos = () => {
 export const deletePhoto = (id) => {
   return API.delete(`/gallery/${id}`);
 };
+
+export const searchPhotos = (title) => {
+  return API.get(`/gallery/search?title=${title}`);
+};

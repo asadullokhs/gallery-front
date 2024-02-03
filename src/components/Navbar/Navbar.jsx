@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Navbar.css";
 import { useInfoContext } from "../../context/Context";
+import { toast } from "react-toastify";
+import { searchPhotos } from "../../api/photoRequests";
 
 const Navbar = () => {
-  const { exit } = useInfoContext();
+  const { exit, setPhotos } = useInfoContext();
+
+  const photo_ref = useRef();
+
+  const searchPhoto = async () => {
+    try {
+      toast.loading("Please wait...");
+      const data = photo_ref.current.value;
+      const res = await searchPhotos(data);
+      toast.dismiss();
+      setPhotos(res?.data?.result);
+
+      photo_ref.current.value = "";
+    } catch (error) {
+      toast.dismiss();
+      toast.error(error.response.data.message);
+    }
+  };
   return (
     <div>
       <nav className="navbar navbar-expand-lg">
@@ -44,17 +63,22 @@ const Navbar = () => {
                 </button>
               </li>
             </ul>
-            <form className="d-flex" role="search">
+            <div className="d-flex">
               <input
                 className="form-control me-2"
                 type="search"
                 placeholder="𝚂𝚎𝚊𝚛𝚌𝚑"
                 aria-label="Search"
+                ref={photo_ref}
               />
-              <button className="btn  search" type="submit">
+              <button
+                onClick={searchPhoto}
+                className="btn  search"
+                type="submit"
+              >
                 𝚂𝚎𝚊𝚛𝚌𝚑
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </nav>

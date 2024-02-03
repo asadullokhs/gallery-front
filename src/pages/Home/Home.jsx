@@ -9,6 +9,8 @@ import Photo from "../../components/Photo/Photo";
 const Home = () => {
   const { currentUser, photos, setPhotos } = useInfoContext();
 
+  console.log(photos);
+
   useEffect(() => {
     const getImages = async () => {
       try {
@@ -24,7 +26,7 @@ const Home = () => {
     };
 
     getImages();
-  }, [currentUser._id]);
+  }, [currentUser._id, setPhotos]);
   return (
     <div className="Home">
       <Navbar />
