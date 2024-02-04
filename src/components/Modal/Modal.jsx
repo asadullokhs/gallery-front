@@ -13,6 +13,12 @@ const Modal = () => {
       toast.loading("Please wait...");
       const formDate = new FormData(e.target);
       const { data } = await updatePhoto(postId, formDate);
+      console.log(data);
+      toast.dismiss();
+      toast.success("Succesfully updated");
+      setModal(false);
+
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }

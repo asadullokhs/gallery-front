@@ -15,6 +15,7 @@ const Photo = ({ photo }) => {
       await deletePhoto(postId);
       toast.dismiss();
       toast.success("Succesfully deleted!");
+      window.location.reload();
     } catch (error) {
       toast.dismiss();
       console.log(error);
