@@ -4,18 +4,19 @@ import { useInfoContext } from "../../context/Context";
 import { deletePhoto } from "../../api/photoRequests";
 import { toast } from "react-toastify";
 
-const Photo = ({ photo }) => {
-  const { exit, setModal, setPostId, postId } = useInfoContext();
+const Photo = ({ photo, photos, setPhotos }) => {
+  const { exit, setModal, setPostId } = useInfoContext();
 
   const [open, setOpen] = useState(false);
 
-  const handleDelete = async () => {
+  const handleDelete = async (id) => {
     try {
       toast.loading("Please wait...");
-      await deletePhoto(postId);
+      await deletePhoto(id);
       toast.dismiss();
       toast.success("Succesfully deleted!");
-      window.location.reload();
+      const rasmlar = photos.filter((rasm) => rasm._id !== id);
+      setPhotos(rasmlar);
     } catch (error) {
       toast.dismiss();
       console.log(error);
@@ -27,7 +28,7 @@ const Photo = ({ photo }) => {
   };
   return (
     <div className="photo ">
-      <img className="image" src={photo.image.url} alt="" />
+      <img className="image" src={photo?.image.url} alt="" />
       <div className="flex-elements">
         <p className="photo-title">{photo?.title}</p>
 
@@ -35,15 +36,14 @@ const Photo = ({ photo }) => {
           <>
             <span
               onClick={() => {
-                setPostId(photo._id);
-                handleDelete();
+                handleDelete(photo?._id);
               }}
               className="photo-delete fa-solid fa-trash"
             ></span>
             <span
               onClick={() => {
                 setModal(true);
-                setPostId(photo._id);
+                setPostId(photo?._id);
               }}
               className="photo-update fa-solid fa-pen"
             ></span>

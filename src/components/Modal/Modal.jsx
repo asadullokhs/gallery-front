@@ -12,8 +12,7 @@ const Modal = () => {
     try {
       toast.loading("Please wait...");
       const formDate = new FormData(e.target);
-      const { data } = await updatePhoto(postId, formDate);
-      console.log(data);
+      await updatePhoto(postId, formDate);
       toast.dismiss();
       toast.success("Succesfully updated");
       setModal(false);
@@ -44,12 +43,14 @@ const Modal = () => {
                 name="title"
                 className="form-control mb-3"
                 placeholder="New title..."
+                required
               />
               <input
                 type="file"
                 name="image"
                 className="form-control mb-3"
                 placeholder="New photo..."
+                required
               />
               <button className="btn btn-outline-primary w-100 form-btn">
                 Change

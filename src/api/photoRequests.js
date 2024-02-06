@@ -8,6 +8,10 @@ export const getPhotos = () => {
   return API.get(`/gallery`);
 };
 
+export const addPhoto = (formDate) => {
+  return API.post("/gallery", formDate);
+};
+
 export const deletePhoto = (id) => {
   return API.delete(`/gallery/${id}`);
 };
