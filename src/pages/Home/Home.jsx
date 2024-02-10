@@ -9,6 +9,8 @@ import Photo from "../../components/Photo/Photo";
 const Home = () => {
   const [photos, setPhotos] = useState([]);
 
+  console.log(photos);
+
   const { currentUser } = useInfoContext();
 
   useEffect(() => {
@@ -36,7 +38,6 @@ const Home = () => {
       const res = await addPhoto(formDate);
       toast.dismiss();
       toast.success(res?.data?.message);
-      console.log(photos);
       setPhotos([...photos, res?.data?.newPhoto]);
     } catch (error) {
       toast.dismiss();
@@ -50,7 +51,7 @@ const Home = () => {
       <div className="container">
         <div className="add-form">
           <form
-            className="p-3 d-flex align-items-center justify-content-evenly"
+            className="p-3 d-flex align-items-center justify-content-evenly flex-wrap"
             onSubmit={handleCreate}
           >
             <input
@@ -87,7 +88,7 @@ const Home = () => {
         </div>
       </div>
       <div className="images">
-        {photos.length > 0 ? (
+        {photos?.length > 0 ? (
           photos.map((photo) => {
             return (
               <div key={photo._id} className="photo-item">

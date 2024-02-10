@@ -9,7 +9,9 @@ export const getPhotos = () => {
 };
 
 export const addPhoto = (formDate) => {
-  return API.post("/gallery", formDate);
+  const token = JSON.parse(localStorage.getItem("token"));
+  console.log(token);
+  return API.post("/gallery", formDate, { headers: { token } });
 };
 
 export const deletePhoto = (id) => {
