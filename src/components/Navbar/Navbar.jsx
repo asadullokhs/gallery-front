@@ -3,6 +3,7 @@ import "./Navbar.css";
 import { useInfoContext } from "../../context/Context";
 import { toast } from "react-toastify";
 import { searchPhotos } from "../../api/photoRequests";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ setPhotos }) => {
   const { exit } = useInfoContext();
@@ -55,7 +56,13 @@ const Navbar = ({ setPhotos }) => {
                 </a>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/web">
+                  Web-Camera
+                </Link>
+              </li>
+              <li className="nav-item">
                 <button
+                  button
                   className="nav-link btn"
                   onClick={exit}
                   aria-current="page"

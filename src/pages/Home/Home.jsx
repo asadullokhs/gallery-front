@@ -20,7 +20,9 @@ const Home = () => {
         const res = await getPhotos();
         toast.dismiss();
         toast.success("All photos");
-        setPhotos(res?.data?.photos);
+        setPhotos(
+          res?.data?.photos.filter((photo) => photo.author === currentUser._id)
+        );
       } catch (error) {
         console.log(error);
         toast.error(error.message);

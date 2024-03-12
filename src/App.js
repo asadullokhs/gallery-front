@@ -10,14 +10,19 @@ import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap";
 import Modal from "./components/Modal/Modal";
+import { Route, Routes } from "react-router-dom";
+import Web from "./pages/Web/Web";
 
 const App = () => {
   const { currentUser, modal } = useInfoContext();
 
   return (
     <div className="App">
-      {currentUser ? <Home /> : <Auth />}
       <ToastContainer />
+      <Routes>
+        <Route path="/" element={currentUser ? <Home /> : <Auth />} />
+        <Route path="/web" element={<Web />} />
+      </Routes>
 
       {modal && <Modal />}
     </div>

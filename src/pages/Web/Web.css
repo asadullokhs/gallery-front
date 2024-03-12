@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.display {
+    width: 500px;
+    height: 380px;
+    margin: 50px auto;
+    border: 10px solid gray;
+    border-radius: 20px;
+}
+
+#snap{
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 5px solid darkred;
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+    font-size: 22px;
+    transition: 0.3s linear;
+}
+
+#snap:hover{
+    transform: scale(1.05);
+}
