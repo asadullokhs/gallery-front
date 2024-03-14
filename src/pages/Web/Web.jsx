@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import "./Web.css";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { addPhoto } from "../../api/photoRequests";
 
 const Web = () => {
   const navigate = useNavigate();
   const video_ref = useRef(null);
   const canvas_ref = useRef(null);
-  const image_ref = useRef(null);
 
   useEffect(() => {
     if (video_ref.current) {
@@ -36,30 +37,56 @@ const Web = () => {
     }
   }, []);
 
-  const snap = () => {
+  const snap = async () => {
     if (canvas_ref.current) {
       var context = canvas_ref.current.getContext("2d");
-      context.drawImage(video_ref.current, 0, 0, 500, 350);
+      context.drawImage(video_ref.current, 0, 0, 580, 350);
+    }
+  };
 
-      const image = canvas_ref.current
-        .toDataURL("image/png")
-        .replace("image/png", "image/octet-stream");
-      image_ref.current.src = image;
+  const handleCreate = async (e) => {
+    e.preventDefault();
+    try {
+      toast.loading("Wait...");
+      const image = canvas_ref.current.toDataURL("image/png");
 
-      console.log(image);
+      const blob = await fetch(image).then((res) => res.blob());
 
-      window.location.href = image;
+      const file = new File([blob], "image.jpg", { type: "image/jpeg" });
 
+      const formDate = new FormData(e.target);
+      formDate.append("photo", file);
+      const res = await addPhoto(formDate);
+
+      toast.dismiss();
+      toast.success(res?.data?.message);
       navigate("/");
+    } catch (error) {
+      toast.dismiss();
+      toast.error(error?.message);
+      console.log(error.message);
     }
   };
 
   return (
     <div>
+      <form onSubmit={handleCreate}>
+        <input
+          type="text"
+          name="title"
+          placeholder="Enter your title..."
+          required
+          style={{ margin: "0 auto" }}
+          className="form-control text-center w-25 my-5"
+        />
+
+        <button>ok</button>
+      </form>
       <div className="display">
         <video
           ref={video_ref}
           id="video"
+          muted="true"
           autoPlay
           width="480px"
           height="380px"
@@ -69,7 +96,7 @@ const Web = () => {
       <button onClick={snap} id="snap"></button>
 
       <canvas ref={canvas_ref} id="canvas" width="500px" height="350px">
-        <img ref={image_ref} id="img" src="" alt="" />
+        {/* <img ref={image_ref} id="img" src="" alt="" /> */}
       </canvas>
     </div>
   );

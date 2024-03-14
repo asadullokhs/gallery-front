@@ -9,8 +9,6 @@ import Photo from "../../components/Photo/Photo";
 const Home = () => {
   const [photos, setPhotos] = useState([]);
 
-  console.log(photos);
-
   const { currentUser } = useInfoContext();
 
   useEffect(() => {
