@@ -5,7 +5,8 @@
 }
 
 .display {
-    width: 500px;
+    width: 640px;
+    text-align: center;
     height: 380px;
     margin: 50px auto;
     border: 10px solid gray;
@@ -27,4 +28,20 @@
 
 #snap:hover{
     transform: scale(1.05);
+}
+
+#canvas{
+    border-radius: 10px;
+    display: block;
+    margin: 50px auto;
+}
+
+.ok{
+    padding: 10px 30px;
+    background-color: dodgerblue;
+    color: white;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    border-radius: 5px;
 }

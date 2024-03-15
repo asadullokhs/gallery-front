@@ -57,7 +57,7 @@ const Navbar = ({ setPhotos }) => {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/web">
-                  Web-Camera
+                  𝚆𝚎𝚋 𝚌𝚊𝚖𝚎𝚛𝚊
                 </Link>
               </li>
               <li className="nav-item">

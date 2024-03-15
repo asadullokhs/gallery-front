@@ -80,7 +80,7 @@ const Web = () => {
           className="form-control text-center w-25 my-5"
         />
 
-        <button>ok</button>
+        <button className="ok">ok</button>
       </form>
       <div className="display">
         <video
@@ -88,16 +88,19 @@ const Web = () => {
           id="video"
           muted="true"
           autoPlay
-          width="480px"
-          height="380px"
+          width="580px"
+          height="360px"
         ></video>
       </div>
 
       <button onClick={snap} id="snap"></button>
 
-      <canvas ref={canvas_ref} id="canvas" width="500px" height="350px">
-        {/* <img ref={image_ref} id="img" src="" alt="" /> */}
-      </canvas>
+      <canvas
+        ref={canvas_ref}
+        id="canvas"
+        width="500px"
+        height="350px"
+      ></canvas>
     </div>
   );
 };
