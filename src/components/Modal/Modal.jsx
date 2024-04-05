@@ -23,40 +23,35 @@ const Modal = () => {
     }
   };
   return (
-    <div>
-      <div className="modal-box">
-        <div className="modal-body p-2">
-          <div className="modal-header">
-            <h2>Update photo</h2>
-            <button
-              className="btn"
-              onClick={() => setModal(false)}
-              type="button"
-            >
-              &#10005;
+    <div className="modal-box">
+      <div className="modal-body p-2">
+        <div className="modal-header">
+          <h2>Update photo</h2>
+          <button className="btn" onClick={() => setModal(false)} type="button">
+            &#10005;
+          </button>
+        </div>
+        <div className="modal-content">
+          <form className="p-3" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="title"
+              className="form-control mb-3"
+              placeholder="New title..."
+              required
+            />
+            <input
+              type="file"
+              name="image"
+              className="form-control mb-3"
+              placeholder="New photo..."
+              required
+            />
+            <button className="btn btn-outline-primary w-100 form-btn">
+              Change
             </button>
-          </div>
-          <div className="modal-content">
-            <form className="p-3" onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="title"
-                className="form-control mb-3"
-                placeholder="New title..."
-                required
-              />
-              <input
-                type="file"
-                name="image"
-                className="form-control mb-3"
-                placeholder="New photo..."
-                required
-              />
-              <button className="btn btn-outline-primary w-100 form-btn">
-                Change
-              </button>
-            </form>
-          </div>
+          </form>
+          <p>Or</p>
         </div>
       </div>
     </div>

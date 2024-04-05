@@ -17,7 +17,7 @@ const App = () => {
   const { currentUser, modal } = useInfoContext();
 
   return (
-    <div className="App">
+    <div className="App" style={{ position: "relative" }}>
       <ToastContainer />
       <Routes>
         <Route path="/" element={currentUser ? <Home /> : <Auth />} />
