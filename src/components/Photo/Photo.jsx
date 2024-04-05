@@ -32,7 +32,7 @@ const Photo = ({ photo, photos, setPhotos }) => {
   };
   return (
     <div className="photo">
-      <img className="image" src={photo?.image.url} alt="" />
+      <img className="image" src={photo?.image.url} alt="image" />
       <div className="flex-elements">
         <p className="photo-title">{photo?.title}</p>
 
