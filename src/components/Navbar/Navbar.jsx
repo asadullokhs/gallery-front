@@ -6,8 +6,7 @@ import { searchPhotos } from "../../api/photoRequests";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ setPhotos }) => {
-  const { exit } = useInfoContext();
-
+  const { exit, currentUser } = useInfoContext();
   const photo_ref = useRef();
 
   const searchPhoto = async () => {
@@ -16,7 +15,10 @@ const Navbar = ({ setPhotos }) => {
       const data = photo_ref.current.value;
       const res = await searchPhotos(data);
       toast.dismiss();
-      setPhotos(res?.data?.result);
+
+      setPhotos(
+        res?.data?.result.filter((photo) => photo.author === currentUser._id)
+      );
 
       photo_ref.current.value = "";
       toast.success("Found photos");

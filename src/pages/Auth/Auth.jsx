@@ -19,7 +19,6 @@ const Auth = () => {
     try {
       toast.loading("Please wait...");
       const formData = new FormData(e.target);
-      console.log(formData);
       setLoading(true);
 
       let res;
@@ -28,10 +27,11 @@ const Auth = () => {
         const confirmPassword = formData.get("confirmPassword");
 
         if (password === confirmPassword) {
-          toast.loading("Please wait...");
           setConfirmPass(true);
           res = await register(formData);
+          toast.dismiss();
         } else {
+          toast.dismiss();
           return setConfirmPass(false);
         }
       } else {
@@ -40,13 +40,13 @@ const Auth = () => {
       }
       toast.dismiss();
       setLoading(false);
-      localStorage.setItem("profile", JSON.stringify(res.data.user));
-      localStorage.setItem("token", JSON.stringify(res.data.token));
-      setCurrentUser(res.data.user);
+      localStorage.setItem("profile", JSON.stringify(res?.data.user));
+      localStorage.setItem("token", JSON.stringify(res?.data.token));
+      setCurrentUser(res?.data.user);
     } catch (error) {
       toast.dismiss();
       setLoading(false);
-      toast.error(error.response.data.message);
+      toast.error(error?.response?.data.message);
     }
   };
 

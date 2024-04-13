@@ -51,7 +51,6 @@ const Modal = () => {
               Change
             </button>
           </form>
-          <p>Or</p>
         </div>
       </div>
     </div>
