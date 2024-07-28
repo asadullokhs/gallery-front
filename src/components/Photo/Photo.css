@@ -1,8 +1,9 @@
 .photo{
     position: relative;
+    margin-bottom: 10px;
 }
 .image{
-    width: 352px;
+    width: 357px;
     height: 300px;
     object-fit: cover;
 }
